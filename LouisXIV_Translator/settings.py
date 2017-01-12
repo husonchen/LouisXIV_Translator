@@ -26,7 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+APPEND_SLASH = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -76,8 +76,13 @@ WSGI_APPLICATION = 'LouisXIV_Translator.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME' : 'louisxiv',
+        'USER' : 'louis_user',
+        'PASSWORD' : 'pw2017-01-10',
+        'HOST' : 'husonchen.com',
+        'PORT' : '3306',
+        'default-character-set' : 'utf8',
     }
 }
 
@@ -105,6 +110,15 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -122,8 +136,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/assets/'
 STATIC_ROOT = ''
 STATICFILES_DIRS = (BASE_DIR+'/static/',)
-print STATIC_ROOT
+
 CONTROLLER = 'Translator.controller'
