@@ -4,7 +4,7 @@
             <div class="tpl-portlet-components">
                 <div class="portlet-title">
                     <div class="caption font-green bold">
-                        <span class="am-icon-code"></span> 翻译列表
+                        <span class="am-icon-code"></span> 已完成列表
                     </div>
                     <div class="tpl-portlet-input tpl-fz-ml">
                         <div class="portlet-input input-small input-inline">
@@ -27,38 +27,15 @@
                                             <th class="table-text">原文</th>
                                             <th class="table-text">译文</th>
                                             <th class="table-date am-hide-sm-only">修改日期</th>
-                                            <th class="table-set">操作</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="am-hide-sm-only">测试1号3333333eeeeeeeeeeeeeeeee3</td>
-                                            <td class="am-hide-sm-only">
-                                                <input type="text" id="user-weibo" placeholder="输入译文">
-                                            </td>
-                                            <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
-                                            <td>
-                                                <div class="am-btn-toolbar">
-                                                    <div class="am-btn-group am-btn-group-xs">
-                                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 提交</button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
                                         {% for message in messages %}
-                                        <tr>
+                                        <tr id="tr_{{ message.message_id }}">
                                             <td class="am-hide-sm-only">{{ message.message_original }}</td>
-                                            <td class="am-hide-sm-only">
-                                                <input type="text" id="user-weibo" placeholder="输入译文">
-                                            </td>
+                                            <td class="am-hide-sm-only">{{ message.message_translate }}</td>
                                             <td class="am-hide-sm-only">{{ message.update_time }}</td>
-                                            <td>
-                                                <div class="am-btn-toolbar">
-                                                    <div class="am-btn-group am-btn-group-xs">
-                                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 提交</button>
-                                                    </div>
-                                                </div>
-                                            </td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -87,6 +64,9 @@
                 <div class="tpl-alert"></div>
             </div>
 
+<script>
+
+</script>
 
 
 

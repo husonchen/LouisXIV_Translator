@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'Translator.login_auth_middleware.LoginAuthMiddleware',
 ]
 
 ROOT_URLCONF = 'LouisXIV_Translator.urls'

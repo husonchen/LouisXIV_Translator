@@ -166,14 +166,27 @@
                             <span>首页</span>
                         </a>
                     </li>
+
                     <li class="tpl-left-nav-item">
-                        <a onclick="translateTask()" class="nav-link tpl-left-nav-link-list" id="translateTaskNav">
-                            <i class="am-icon-bar-chart"></i>
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list" id="translateNavGroup">
+                            <i class="am-icon-table"></i>
                             <span>翻译任务</span>
-                            <i class="tpl-left-nav-content tpl-badge-danger">
-                               12
-                             </i>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
                         </a>
+                        <ul class="tpl-left-nav-sub-menu" >
+                            <li>
+                                <a onclick="translateTask()" id="translateTaskNav">
+                                    <i class="am-icon-angle-right" ></i>
+                                    <span>未完成</span>
+                                </a>
+
+                                <a onclick="translateFinished()" id="translateFinishedNav">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>已完成</span>
+                                </a>
+
+                            </li>
+                        </ul>
                     </li>
 
 
@@ -205,7 +218,7 @@
 function translateTask() {
     $.ajax({
             type: "get",
-            url:"/translate_task/",
+            url:"/translate_task/task",
             data:{},
             async: false,
             error: function(request) {
@@ -213,8 +226,27 @@ function translateTask() {
             },
             success: function(data) {
                 $("#mainContent").html(data);
-                $("#indexNav").attr("class","nav-link tpl-left-nav-link-list");
-                $("#translateTaskNav").attr("class","nav-link active");
+                $(".active").removeClass("active");
+                $("#translateTaskNav").addClass("active");
+                $("#translateNavGroup").addClass("active");
+            }
+        });
+}
+
+function translateFinished() {
+    $.ajax({
+            type: "get",
+            url:"/translate_task/finished",
+            data:{},
+            async: false,
+            error: function(request) {
+                alert("Connection error");
+            },
+            success: function(data) {
+                $("#mainContent").html(data);
+                $(".active").removeClass("active");
+                $("#translateFinishedNav").addClass("active");
+                $("#translateNavGroup").addClass("active");
             }
         });
 }
