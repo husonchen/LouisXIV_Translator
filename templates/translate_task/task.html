@@ -33,8 +33,8 @@
                                     <tbody>
                                         {% for message in messages %}
                                         <tr id="tr_{{ message.message_id }}">
-                                            <td class="am-hide-sm-only">{{ message.message_original }}</td>
-                                            <td class="am-hide-sm-only">
+                                            <td >{{ message.message_original }}</td>
+                                            <td >
                                                 <input type="text" id="message_{{ message.message_id }}" placeholder="输入译文">
                                             </td>
                                             <td class="am-hide-sm-only">{{ message.update_time }}</td>
