@@ -190,6 +190,44 @@
                     </li>
 
 
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list" id="settingNavGroup">
+                            <i class="am-icon-table"></i>
+                            <span>设置</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu" >
+                            <li>
+                                <a onclick="userInfo()" id="userInfoNav">
+                                    <i class="am-icon-angle-right" ></i>
+                                    <span>个人资料</span>
+                                </a>
+
+                                <a onclick="transMoney()" id="transMoneyNav">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>提现</span>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list" id="mailNavGroup">
+                            <i class="am-icon-table"></i>
+                            <span>我的消息</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu" >
+                            <li>
+                                <a onclick="mailInbox()" id="mailInboxNav">
+                                    <i class="am-icon-angle-right" ></i>
+                                    <span>站内信</span>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -250,5 +288,59 @@ function translateFinished() {
             }
         });
 }
-    
+
+function userInfo() {
+    $.ajax({
+            type: "get",
+            url:"/setting/user_info",
+            data:{},
+            async: false,
+            error: function(request) {
+                alert("Connection error");
+            },
+            success: function(data) {
+                $("#mainContent").html(data);
+                $(".active").removeClass("active");
+                $("#userInfoNav").addClass("active");
+                $("#settingNavGroup").addClass("active");
+            }
+        });
+}
+
+function transMoney() {
+    $.ajax({
+            type: "get",
+            url:"/setting/trans_money",
+            data:{},
+            async: false,
+            error: function(request) {
+                alert("Connection error");
+            },
+            success: function(data) {
+                $("#mainContent").html(data);
+                $(".active").removeClass("active");
+                $("#transMoneyNav").addClass("active");
+                $("#settingNavGroup").addClass("active");
+            }
+        });
+}
+function mailInbox() {
+    $.ajax({
+            type: "get",
+            url:"/mail/inbox",
+            data:{},
+            async: false,
+            error: function(request) {
+                alert("Connection error");
+            },
+            success: function(data) {
+                $("#mainContent").html(data);
+                $(".active").removeClass("active");
+                $("#mailInboxNav").addClass("active");
+                $("#mailNavGroup").addClass("active");
+            }
+        });
+}
+
+
 </script>

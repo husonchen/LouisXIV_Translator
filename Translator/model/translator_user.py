@@ -7,6 +7,7 @@ class TranslatorUser(models.Model):
     user_name = models.CharField(max_length=255)
     mail_address = models.CharField(max_length=255)
     user_password = models.CharField(max_length=255)
+    alipay_account = models.CharField(max_length=255,default='')
     create_time = models.DateTimeField()
     update_time = models.DateTimeField()
     del_flag = models.BooleanField(default=0)
